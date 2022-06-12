@@ -1,0 +1,196 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>320c7ccf-e389-4f78-93bd-e2ef3a490fd2</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\MeetingWebsite.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>.\MeetingWebsite.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\node_modules\%40pnotify\**" />
+    <Compile Remove="wwwroot\node_modules\pnotify\**" />
+    <Compile Remove="wwwroot\node_modules\spin.js\**" />
+    <Compile Remove="wwwroot\node_modules\tata-js\**" />
+    <Content Remove="wwwroot\node_modules\%40pnotify\**" />
+    <Content Remove="wwwroot\node_modules\pnotify\**" />
+    <Content Remove="wwwroot\node_modules\spin.js\**" />
+    <Content Remove="wwwroot\node_modules\tata-js\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\%40pnotify\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\pnotify\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\spin.js\**" />
+    <EmbeddedResource Remove="wwwroot\node_modules\tata-js\**" />
+    <None Remove="wwwroot\node_modules\%40pnotify\**" />
+    <None Remove="wwwroot\node_modules\pnotify\**" />
+    <None Remove="wwwroot\node_modules\spin.js\**" />
+    <None Remove="wwwroot\node_modules\tata-js\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220602105523_Migration3.cs" />
+    <Compile Remove="Migrations\20220602105523_Migration3.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\node_modules\bootstrap-slider\bower.json" />
+    <Content Include="wwwroot\node_modules\bootstrap-slider\composer.json" />
+    <Content Include="wwwroot\node_modules\bootstrap-slider\dependencies\css\highlightjs-github-theme.css" />
+    <Content Include="wwwroot\node_modules\bootstrap-slider\dist\css\bootstrap-slider.css" />
+    <Content Include="wwwroot\node_modules\bootstrap-slider\dist\css\bootstrap-slider.min.css" />
+    <Content Include="wwwroot\node_modules\bootstrap-slider\package.json" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\bower.json" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\component.json" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\cookie.jquery.json" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\MIT-LICENSE.txt" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\package.json" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\test\index.html" />
+    <Content Include="wwwroot\node_modules\jquery.cookie\test\malformed_cookie.html" />
+    <Content Include="wwwroot\node_modules\progressbar.js\.jscs.json" />
+    <Content Include="wwwroot\node_modules\progressbar.js\bower.json" />
+    <Content Include="wwwroot\node_modules\progressbar.js\docs\img\animate-call.png" />
+    <Content Include="wwwroot\node_modules\progressbar.js\docs\img\animate-init.png" />
+    <Content Include="wwwroot\node_modules\progressbar.js\docs\img\animation.gif" />
+    <Content Include="wwwroot\node_modules\progressbar.js\docs\pip-requirements.txt" />
+    <Content Include="wwwroot\node_modules\progressbar.js\local-dev\index.html" />
+    <Content Include="wwwroot\node_modules\progressbar.js\local-dev\main.css" />
+    <Content Include="wwwroot\node_modules\progressbar.js\package.json" />
+    <Content Include="wwwroot\node_modules\progressbar.js\testem.json" />
+    <Content Include="wwwroot\node_modules\progressbar.js\test\testem.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\node_modules\bootstrap-slider\.github\CONTRIBUTING.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\.github\ISSUE_TEMPLATE.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\.github\PULL_REQUEST_TEMPLATE.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\.nvmrc" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\.sass-lint.yml" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\.travis.yml" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\CHANGELOG.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\dependencies\js\highlight.min.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\dependencies\js\jquery.min.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\dependencies\js\modernizr.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\dist\bootstrap-slider.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\dist\bootstrap-slider.min.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\Gruntfile.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\LICENSE.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\README.md" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\scripts\build-preview.sh" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\scripts\release.sh" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\scripts\update-gh-pages.sh" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\src\js\bootstrap-slider.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\src\sass\bootstrap-slider.scss" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\src\sass\_mixins.scss" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\src\sass\_rules.scss" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\src\sass\_variables.scss" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\phantom_bind_polyfill.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\AccessibilitySpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\AriaValueTextFormatterSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\AutoRegisterDataProvideSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\ConflictingOptionsSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\DestroyMethodTests.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\DraggingHandlesSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\ElementDataAttributesSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\EventsSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\FocusOptionSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\KeyboardSupportSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\LockToTicksSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\LogarithmicScaleSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\LowAndHighTrackSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\NamespaceSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\offMethodSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\OrientationSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\PublicMethodsSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\RangeHighlightsSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\RefreshMethodSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\ResizeSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\RtlOptionsSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\ScrollableBodySpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\ScrollableContainerSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\StepReachMaxValueSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TickClickingBehaviorSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TickLabelSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TickMarksSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TooltipMouseOverOptionSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TooltipPositionOptionSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TooltipSplitOptionSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\test\specs\TouchCapableSpec.js" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\tpl\index.tpl" />
+    <None Include="wwwroot\node_modules\bootstrap-slider\tpl\SpecRunner.tpl" />
+    <None Include="wwwroot\node_modules\jquery.cookie\.jshintrc" />
+    <None Include="wwwroot\node_modules\jquery.cookie\.npmignore" />
+    <None Include="wwwroot\node_modules\jquery.cookie\.tm_properties" />
+    <None Include="wwwroot\node_modules\jquery.cookie\.travis.yml" />
+    <None Include="wwwroot\node_modules\jquery.cookie\CHANGELOG.md" />
+    <None Include="wwwroot\node_modules\jquery.cookie\CONTRIBUTING.md" />
+    <None Include="wwwroot\node_modules\jquery.cookie\Gruntfile.js" />
+    <None Include="wwwroot\node_modules\jquery.cookie\jquery.cookie.js" />
+    <None Include="wwwroot\node_modules\jquery.cookie\README.md" />
+    <None Include="wwwroot\node_modules\jquery.cookie\test\server.js" />
+    <None Include="wwwroot\node_modules\jquery.cookie\test\tests.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\.editorconfig" />
+    <None Include="wwwroot\node_modules\progressbar.js\.env.sample" />
+    <None Include="wwwroot\node_modules\progressbar.js\.eslintrc" />
+    <None Include="wwwroot\node_modules\progressbar.js\.travis.yml" />
+    <None Include="wwwroot\node_modules\progressbar.js\dist\progressbar.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\dist\progressbar.min.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\dist\progressbar.min.js.map" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\api\general.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\api\parameters.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\api\path.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\api\shape.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\contributing.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\docs\index.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\Gruntfile.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\karma.conf.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\LICENSE" />
+    <None Include="wwwroot\node_modules\progressbar.js\local-dev\main.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\mkdocs.yml" />
+    <None Include="wwwroot\node_modules\progressbar.js\README.md" />
+    <None Include="wwwroot\node_modules\progressbar.js\saucelabs-browsers.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\circle.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\line.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\main.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\path.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\semicircle.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\shape.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\square.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\src\utils.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\test\path-behaviour.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\test\shape-behaviour.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\test\test-all.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\test\test-utils.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\tools\lint.sh" />
+    <None Include="wwwroot\node_modules\progressbar.js\tools\release.js" />
+    <None Include="wwwroot\node_modules\progressbar.js\tools\test.sh" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="4.1.1" />
+    <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore" Version="3.7.2" />
+    <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.linux-x64" Version="3.7.2" />
+    <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.osx-x64" Version="3.7.2" />
+    <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.7.2" />
+    <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x86" Version="3.7.2" />
+    <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="React.AspNet" Version="5.2.11" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+</Project>

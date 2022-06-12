@@ -1,0 +1,236 @@
+﻿@model List<Activity>
+@using MeetingWebsite.Models
+@{
+    ViewData["Title"] = "События";
+}
+<div class="h-100 w-100 row border m-0">
+    <div class="h-100 w-25 flex-column border-right" onmouseout="getActivities()">
+
+        <div id="dialogs-title" class="text-center py-3">Настройки поиска</div>
+        <form id="settings" class="px-3 mt-4">
+            @Html.DropDownList("SportKind", Html.GetEnumSelectList(typeof(SportKind)), new { @class = "form-control my-2", @onchange = "onChangeSettings()" })
+            @Html.DropDownList("level", Html.GetEnumSelectList(typeof(Level)), new { @class = "form-control my-2", @onchange = "onChangeSettings()" })
+            <a href="/Activities/New" class="card-link mx-auto">Добавить событие</a>
+        </form>
+    </div>
+   
+    <div class="h-100 w-75 pb-2 d-flex flex-column">
+        <div class="px-3 py-3 dialog-title border-bottom" style="font-size: 1.2rem;">События</div>
+        <div class="w-100 h-100 py-3 flex-grow-1 overflow-auto">
+            <div class="px-5 d-flex flex-column" id="activity">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                <div class="d-flex justify-content-between flex-nowrap message">
+                    <div class="row m-0 flex-nowrap">
+                        <div class="rounded-circle activity-icon overflow-hidden">
+                            <img src="~/images/user.png" style="width: 100%" />
+                        </div>
+                        <div class="d-flex flex-column">
+                            @* Вид спорта *@
+                            <div class="row m-0 p-0 align-content-end">
+                                <p class="activity-name pl-2 m-0" type="submit" onclick="openActivity(@Model[i].Id)">@Model[i].SportKind</p>
+                            </div>
+                            @* Автор *@
+                            <div class="row m-0 p-0 align-content-end">
+                                <p class="activity-name pl-2 m-0">@Model[i].Id</p>
+                            </div>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model[i].City
+                            </p>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Количество: @Model[i].CountUser из @Model[i].Count
+                            </p>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Уровень: @Model[i].level
+                            </p>
+                            @* Адресс *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model[i].Address
+                            </p>
+                            @* Дата *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model[i].Date
+                            </p>
+                            @* Цена *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Стоимость: @Model[i].Price
+                            </p>
+                            <p class="pl-2 activity-body">
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="float-right d-flex flex-column">
+                        <a href="#"  class ="pl-2 m-0"onclick="createDialogAndOpen(@Model[i].UserId)">
+                            Написать
+                        </a>
+                        <a href="#"  class ="pl-2 m-0" onclick="addMe(@Model[i].Id)">
+                            Присоединиться
+                        </a>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var timeout = -10;
+    var oldformSerialize = '';
+    $(() => {
+        //onChangeSettings();
+        oldformSerialize = $('#settings').serialize();
+    })
+
+    //Выбор события
+    @*function getActivity(id) {
+        send('/api/Activities/${id}', 'GET', openActivity);
+    }*@
+
+    function openActivity(id) {
+        window.location = `/Activity?id=${id}`;
+    }
+
+
+    @*function openActivi(response) {
+        if (response.status == 200) {
+            $('#activity').html('');
+            var activity = response.responseJSON;
+            alert(activity.City);
+            var activityHtml =
+                <div class="d-flex justify-content-between flex-nowrap message">
+                        <div class="row m-0 flex-nowrap">
+
+                            <div class="rounded-circle user-icon overflow-hidden">
+                                <img src="~/images/user.png" style="width: 100%" />
+                            </div>
+                            <div class="d-flex flex-column">
+
+                                <div class="row m-0 p-0 align-content-end">
+                                <p class="user-name pl-2 m-0">${activity.SportKind}</p>
+                                </div>
+
+                                <div class="row m-0 p-0 align-content-end">
+                                <p class="user-name pl-2 m-0">${activity.Id}</p>
+                                </div>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                ${activity.City}
+                                </p>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Количество: ${activity.CountUser} из ${activity.Count}
+                                </p>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Уровень: &{activity.level}
+                                </p>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                ${activity.Address}
+                                </p>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                ${activity.Date}
+                                </p>
+
+                                <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Стоимость: ${activity.Price}
+                                </p>
+                                <p class="pl-2 activity-body">
+
+                                </p>
+                            </div>
+                        </div>
+                </div>
+            $('#activity').append(activityHtml);
+        }
+        else
+        alert("ERROR");
+    }*@
+
+    function addMe(Id) {
+        send("/api/Activities", 'PUT', refreshActivity, JSON.stringify([Id]));
+    }
+    function refreshActivity(response) {
+        debugger;
+        if (response.status == 200)
+            window.location = '/Activities';
+        else
+            alert(response.responseText);
+    }
+
+    function createDialogAndOpen(userId) {
+        send('/api/Dialogs', 'POST', openDialog, JSON.stringify([userId]));
+    }
+    function openDialog(response) {
+        debugger;
+        if (response.status == 200)
+            window.location = `/Dialogs?id=${response.responseText}`;// TODO: Перейти на страницу диалога
+        else
+            alert(response.responseText);
+    }
+
+
+
+    // Событие при изменении настроек поиска
+    function onChangeSettings() {
+        if (timeout != undefined)
+            clearTimeout(timeout);
+        timeout = setTimeout(getActivities, 1500);
+        console.log(timeout);
+    }
+
+    // Получение пользователей
+    function getActivities() {
+        if (timeout != undefined)
+            clearTimeout(timeout);
+        var formSerialize = $('#settings').serialize();
+        if (formSerialize != oldformSerialize) {
+            oldformSerialize = formSerialize;
+            send(`/api/SearchActivities?${formSerialize}`, 'GET', refreshActivities);
+        }
+    }
+
+    // Отрисовка пользователей
+    function refreshActivities(response) {
+        var activities = response.responseJSON;
+        $('#activity').html('');
+        if (activities.length != 0) {
+            activities.forEach(activity => {
+                var photoPath = '/images/user.png';
+
+                var activityHtml = `
+                <div class="d-flex justify-content-between flex-nowrap message">
+                    <div class="row m-0 flex-nowrap">
+                    <div class="rounded-circle user-icon overflow-hidden">
+                        <img src="${photoPath}" style="width: 100%" />
+                    </div>
+                    <div class="d-flex flex-column">
+
+                        <div class="row m-0 p-0 align-content-end">
+                            <p class="user-name pl-2 m-0">${activity.sportKind}</p>
+                        </div>
+
+                        <p  class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                            ${activity.level}
+                        </p>
+                        <p class="pl-2 activity-body" style="color: #7d7d7d">
+                            ${activity.price}
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>`;
+
+                $('#activity').append(activityHtml);
+            });
+        }
+        alert(response.responseText);
+    }
+</script>

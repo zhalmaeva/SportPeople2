@@ -1,0 +1,67 @@
+﻿@model MeetingWebsite.Models.Activity
+@using MeetingWebsite.Models
+
+@{
+    ViewData["Title"] = "Событие";
+}
+
+<div class="h-100 w-100 row border m-0">
+    <div class="h-100 w-75 pb-2 d-flex flex-column">
+        <div class="w-100 h-100 py-3 flex-grow-1 overflow-auto">
+            <div class="px-5 d-flex flex-column" id="activities">
+                    <div class="d-flex justify-content-between flex-nowrap message">
+                        <div class="row m-0 flex-nowrap">
+
+                            <div class="rounded-circle user-icon overflow-hidden">
+                                <img src="~/images/user.png" style="width: 100%" />
+                            </div>
+                            <div class="d-flex flex-column">
+                                @* Вид спорта *@
+                                <div class="row m-0 p-0 align-content-end">
+                                    <p class="user-name pl-2 m-0">@Model.SportKind</p>
+                                </div>
+                                @* Автор *@
+                                <div class="row m-0 p-0 align-content-end">
+                                    <p class="user-name pl-2 m-0">@Model.Id</p>
+                                </div>
+                                @* Уровень *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    @Model.City
+                                </p>
+                                @* Уровень *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    Количество: @Model.CountUser из @Model.Count
+                                </p>
+                                @* Уровень *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    Уровень: @Model.level
+                                </p>
+                                @* Адресс *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    @Model.Address
+                                </p>
+                                @* Дата *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    @Model.Date
+                                </p>
+                                @* Цена *@
+                                <p class="pl-2 message-body m-0" style="color: #7d7d7d">
+                                    Стоимость: @Model.Price
+                                </p>
+                                <p class="pl-2 message-body">
+
+                                </p>
+                            </div>
+                        </div>
+                        <a href="#" class=" float-right" onclick="createDialogAndOpen(@Model.UserId)">
+                            <img src="/images/message.png" width="40" />
+                        </a>
+                        <a href="#" class=" float-right" onclick="addMe(@Model.Id)">
+                            <img src="/images/message.png" width="40" />
+                        </a>
+                    </div>                
+            </div>
+        </div>
+    </div>
+</div>
+

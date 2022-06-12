@@ -1,0 +1,102 @@
+﻿@model MeetingWebsite.ModelsView.Activities.NewActivityModel
+@using MeetingWebsite.Models
+
+@{
+    ViewData["Title"] = "Новое событие";
+}
+<div class="d-flex flex-column w-75 border ml-3">
+    <div class="card-header">
+        <span>Новое событие</span>
+    </div>
+    <form action="/api/Activities" method="POST" class="p-2 pt-5" onsubmit="sendForm(this, event, OnNewActivity, { onStart: () => $('#error-text').hide(), data:  GetFormData()})">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Город</label>
+            <input name="City" id="City" placeholder="Город" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Вид спорта</label>
+            @*<input name="SportKind" id="SportKind"  placeholder="SportKind" class="form-control w-90 mx-auto mt-2" />*@
+            @Html.DropDownList("SportKind", Html.GetEnumSelectList(typeof(SportKind)), new { @class = "form-control col-5" })
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Уровень</label>
+            @*<input name="level" id="Level"  placeholder="Level" class="form-control w-90 mx-auto mt-2" />*@
+            @Html.DropDownList("Level", Html.GetEnumSelectList(typeof(Level)), new { @class = "form-control col-5" })
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Дата</label>
+            <input name="Date" id="Date" placeholder="Дата" class="form-control col-5" />
+          
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Дата</label>
+            <input min ="@DateTime.Now" type ="datetime-local" name="dateTime" id="dateTime" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Адрес</label>
+            <input name="Address" id="Address" placeholder="Адрес" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Количество человек</label>
+            <input name="Count" id="Count" placeholder="Количество человек" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Стоимость</label>
+            <input name="Price" id="Price" placeholder="Стоимость" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right">Дополнительная информация</label>
+
+            <textarea name="Description" id="Description" placeholder="Дополнительная информация" class="form-control col-5"></textarea>
+        </div>
+        <div class="form-group mb-1 d-flex justify-content-center">
+            <input type="submit" class="btn btn-sm btn-primary disabled" value="Сохранить" />
+        </div>
+        <div class="text-center">
+            <label class="text-danger" id="error"></label>
+        </div>
+    </form>
+</div>
+
+<script>
+    function GetFormData() {
+        return JSON.stringify({
+            "SportKind": parseInt( $('#SportKind').val()),
+            "level": parseInt($('#Level').val()),
+            "Date": $('#Date').val(),
+            "City": $('#City').val(),
+            "Count": $('#Count').val(),
+            "Address": $('#Address').val(),
+            "Price": $('#Price').val(),
+            "Description": $('#Description').val(),
+        })
+    }
+
+    function OnNewActivity(response) {
+        if (response.status == 200) {
+            var redirectUrl = new URL(window.location.href).searchParams.get("redirectUrl")
+            //Если есть куда, то перенаправить
+            if (redirectUrl != undefined && redirectUrl != "") {
+                window.location.replace(redirectUrl);
+            } else {
+                window.location = '/Activities';
+            }
+        }
+        else {
+            if (response.status == 400) {
+                $('#error-text').text(response.responseText);
+                $('#error-text').show();
+            }
+        }
+    }
+</script>

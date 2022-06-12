@@ -1,0 +1,96 @@
+﻿@model MeetingWebsite.ModelsView.ActivityView
+@using MeetingWebsite.Models
+
+@{
+    ViewData["Title"] = "Событие";
+}
+
+<div class="h-100 w-100 row border m-0">
+    <div class="h-100 w-100 pb-2">
+        <div class="px-3 py-3 dialog-title border-bottom text-xl-center" style="font-size: 1.2rem;">@Model.SportKind</div>
+        <div class="w-100 h-100 py-3 overflow-auto">
+            <div class="px-5" id="activities">
+                <div class="activity">
+                    <div class="row m-0">
+
+                        <div class="rounded-circle user-icon overflow-hidden">
+                            <img src="~/images/user.png" style="width: 100%" />
+                        </div>
+                        <div>
+                            @* Вид спорта *@
+                            <div class="row m-0 p-0 align-content-end">
+                                <p class="user-name pl-2 m-0">@Model.SportKind</p>
+                            </div>
+                            @* Автор *@
+                            <div class="row m-0 p-0 align-content-end">
+                                <p class="user-name pl-2 m-0">@Model.Id</p>
+                            </div>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model.City
+                            </p>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Количество: @Model.CountUser из @Model.Count
+                            </p>
+                            @* Уровень *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Уровень: @Model.level
+                            </p>
+                            @* Адресс *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model.Address
+                            </p>
+                            @* Дата *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                @Model.Date
+                            </p>
+                            @* Цена *@
+                            <p class="pl-2 activity-body m-0" style="color: #7d7d7d">
+                                Стоимость: @Model.Price
+                            </p>
+                            <p class="pl-2 activity-body">
+
+                            </p>
+                            <a href="#" class="float-right" onclick="showPeople(@Model.Id)">Показать людей</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="activity" id="people">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showPeople(id) {
+        send(`api/Activities/${id}`, "GET", renderActivityPeople);
+    }
+
+    function renderActivityPeople(response) {
+        $("#people").html('');
+        if (response.status == 200) {
+            if (response.responseJSON.length == 0) {
+                $("#people").append('<p class="center">Участников пока нет</p>');
+
+            }
+            else {
+                response.responseJSON.forEach(user => {
+                    var userHtml = `
+                        <div class="d-flex flex-column" >
+                        <p class="pl-2 activity-body m-0" style = "color: #7d7d7d" >
+                            ${user.firstName} ${user.lastName}
+                        </p >
+                    </div >`;
+                    $('#people').append(userHtml);
+                });
+
+            }
+        }
+        else alert(response.responseText);
+    }
+</script>

@@ -1,0 +1,99 @@
+﻿@model MeetingWebsite.ModelsView.UserModels.UserView
+@using MeetingWebsite.Models
+
+@{
+    ViewData["Title"] = "Аккаунт";
+}
+<div class="d-flex flex-column w-75 border ml-3">
+    <div class="card-header">
+        <span>Настройки</span>
+    </div>
+    <form class="p-2 pt-5" action="/api/Account" method="post" onsubmit="sendForm(this, event, OnUpdate, { onStart: () => $('#error-text').hide(), data:  GetFormData()})" >
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Имя</label>
+            <input name="FirstName" id="FirstName" asp-for="FirstName" class="form-control col-5" value="@Model.FirstName" />
+        </div>
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Фамилия</label>
+            <input  name="LastName" id="LastName" asp-for="LastName" class="form-control col-5" value="@Model.LastName" />
+        </div>
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Возраст</label>
+            <input name="Age" id="Age" asp-for="Age" type="number" class="form-control col-5" min="0" max="100" value="@Model.Age" />
+        </div>
+        <div class="form-group d-flex ">
+            <label name="Sex" id="Sex" class="control-label col-4 text-right" style="line-height: 38px;">Пол</label>
+            @Html.DropDownListFor(x => x.Sex, Html.GetEnumSelectList(typeof(Sex)), new { @class = "form-control col-5" })
+        </div>
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Ник</label>
+            <input name="Nickname" id="Nickname" asp-for="Nickname" class="form-control col-5" value="@Model.Nickname" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Email</label>
+            <input name="Email" id="Email" asp-for="Email" class="form-control col-5" value="@Model.Email" readonly />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Номер телефона</label>
+            <input  name="PhoneNumber" id="PhoneNumber" asp-for="PhoneNumber" class="form-control col-5" value="@Model.PhoneNumber" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Город</label>
+            <input name="City" id="City" asp-for="City" class="form-control col-5" value="@Model.City" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" >Коротко о себе</label>
+
+            <textarea name="BriefInformation" id="BriefInformation" class="form-control col-5" value="@Model.BriefInformation"></textarea>
+        </div>
+        <div class="form-group mb-1 d-flex justify-content-center">
+            <input type="submit" class="btn btn-sm btn-primary disabled" value="Сохранить изменения"/>
+        </div>
+        <div class="text-center">
+            <label class="text-danger" id="error"></label>
+        </div>
+    </form>
+</div>
+
+<script>
+    function GetFormData() {
+        return JSON.stringify({
+            'FirstName': $('#FirstName').val(),
+            'LastName': $('#LastName').val(),
+            'Age': parseInt($('#Age').val()),
+            'Sex': parseInt($('#Sex').val()),
+            'City': $('#City').val(),
+            'PhoneNumber': $('#PhoneNumber').val(),
+            'Nickname': $('#Nickname').val(),
+            'Email': $('#Email').val(),
+            'BriefInformation': $('#BriefInformation').val(),
+        });
+    }
+
+
+    function OnUpdate(response) {
+        if (response.status == 200) {
+           // $.cookie("Authorization", `Bearer ${response.responseJSON.access_token}`, { path: '/' });
+            GetUserInfoFromServer();
+            var redirectUrl = new URL(window.location.href).searchParams.get("redirectUrl")
+            //Если есть куда, то перенаправить
+            if (redirectUrl != undefined && redirectUrl != "") {
+                window.location.replace(redirectUrl);
+            } else {
+                window.location = '/Activities';
+            }
+        }
+        else {
+            if (response.status == 400) {
+                $('#error-text').text(response.responseText);
+                $('#error-text').show();
+            }
+        }
+    }
+
+</script>

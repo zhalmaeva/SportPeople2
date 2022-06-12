@@ -1,0 +1,326 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.center-child {
+    position: relative;
+}
+
+    .center-child > * {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+    }
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.w-90 {
+    width: 90%;
+}
+
+.active-dialog,
+.dialog-simple:hover {
+    background: #b2b2b23b;
+}
+
+.dialog-simple * {
+    line-height: 40px;
+}
+
+.dialog-icon {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    background: #4c4d4c6b;
+}
+
+    .dialog-icon > p {
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color: #030fd4;
+    }
+
+.dialog-title {
+    font-weight: 500;
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+#dialogs-title {
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.user-icon {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+    background: #4c4d4c6b;
+}
+
+    .user-icon > p {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color: #030fd4;
+        line-height: 2.5rem;
+    }
+
+.user-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #2a5885;
+}
+
+/*activity*/
+
+
+.activity-time {
+    font-size: 12.5px;
+    color: rgba(119,126,140,.6);
+}
+
+.activity-body {
+    font-size: 16px;
+}
+
+#activity {
+    min-height: 100%;
+}
+.activity-name {
+    font-size: 25px;
+    font-weight: 800;
+    color: #2a5885;
+}
+.activity {
+    padding-right: 70px;
+}
+
+    .activity:hover .buttons-activity > * {
+        display: block;
+    }
+.activity-icon {
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    background: #4c4d4c6b;
+}
+
+    .activity-icon > p {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        color: #030fd4;
+    }
+
+.buttons-activity {
+    min-width: 40px;
+    max-width: 40px;
+}
+
+    .buttons-activity > * {
+        display: none;
+    }
+
+        .buttons-activity > *:first-child {
+            margin-right: 9px;
+        }
+
+    .buttons-activity img {
+        width: 15px;
+        height: 15px;
+    }
+#send-activity-form {
+    font-size: 13px;
+}
+
+
+.edit-activity{
+    background: #f0f2f5;
+}
+
+
+
+
+
+/* message*/
+#input-message {
+    height: 38.5px;
+}
+
+.message-time {
+    font-size: 12.5px;
+    color: rgba(119,126,140,.6);
+}
+
+.message-body {
+    font-size: 13px;
+}
+
+#messages {
+    min-height: 100%;
+}
+
+.message {
+    padding-right: 40px;
+}
+
+    .message:hover .buttons-message > * {
+        display: block;
+    }
+
+.buttons-message {
+    min-width: 40px;
+    max-width: 40px;
+}
+
+    .buttons-message > * {
+        display: none;
+    }
+
+        .buttons-message > *:first-child {
+            margin-right: 9px;
+        }
+
+    .buttons-message img {
+        width: 15px;
+        height: 15px;
+    }
+
+.menu-item:hover img {
+    width: 45px;
+}
+
+#menu {
+    min-width: 45px;
+    max-width: 45px;
+}
+
+.slider {
+    max-width: 100%;
+}
+
+#send-message-form {
+    font-size: 13px;
+}
+
+
+.edit-message {
+    background: #f0f2f5;
+}
+
+.btn-cancel {
+    padding: 4px 12px;
+    background: #6c757d6b;
+    border-radius: 5px;
+}
+
+    .btn-cancel:hover {
+        background: rgba(108, 117, 125, 0.54);
+    }
+
+#progress-delete {
+    height: 0.3rem
+}
+
+    #progress-delete > svg {
+        vertical-align: top;
+    }

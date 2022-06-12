@@ -1,0 +1,59 @@
+﻿@model MeetingWebsite.ModelsView.News.AddNewView
+@using MeetingWebsite.Models
+
+@{
+    ViewData["Title"] = "Добавить новость";
+}
+
+<div class="d-flex flex-column w-75 border ml-3">
+    <div class="card-header">
+        <span>Добавить новость</span>
+    </div>
+    <form action="/api/News" method="POST" class="p-2 pt-5" onsubmit="sendForm(this, event, OnNewNew, { onStart: () => $('#error-text').hide(), data:  GetFormData()})">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right" style="line-height: 38px;">Заголовок</label>
+            <input name="Title" id="Title" placeholder="Заголовок" class="form-control col-5" />
+        </div>
+
+        <div class="form-group d-flex ">
+            <label class="control-label col-4 text-right">Содержание</label>
+
+            <textarea name="Text" id="Text" placeholder="Содержание" class="form-control col-5"></textarea>
+        </div>
+        <div class="form-group mb-1 d-flex justify-content-center">
+            <input type="submit" class="btn btn-sm btn-primary disabled" value="Сохранить" />
+        </div>
+        <div class="text-center">
+            <label class="text-danger" id="error"></label>
+        </div>
+    </form>
+</div>
+
+<script>
+    function GetFormData() {
+        return JSON.stringify({
+            "Title": $('#Title').val(),
+            "Text": $('#Text').val(),
+        })
+    }
+
+    function OnNewNew(response) {
+        if (response.status == 200) {
+            var redirectUrl = new URL(window.location.href).searchParams.get("redirectUrl")
+            //Если есть куда, то перенаправить
+            if (redirectUrl != undefined && redirectUrl != "") {
+                window.location.replace(redirectUrl);
+            } else {
+                window.location = '/News';
+            }
+        }
+        else {
+            if (response.status == 400) {
+                $('#error-text').text(response.responseText);
+                $('#error-text').show();
+            }
+        }
+    }
+</script>

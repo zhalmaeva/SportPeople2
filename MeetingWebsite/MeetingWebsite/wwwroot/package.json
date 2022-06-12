@@ -1,0 +1,19 @@
+{
+  "name": "wwwroot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap-slider": "^11.0.2",
+    "jquery.cookie": "^1.4.1",
+    "progressbar.js": "^1.1.0"
+  }
+}
